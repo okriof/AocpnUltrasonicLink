@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/lblBluetoothStatus2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bluetooth status:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="63dp" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="123dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="onClickStop"
+        android:text="Stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="206dp" />
+
+    <TextView
+        android:id="@+id/tvBLEstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BLE"
+        app:layout_constraintTop_toBottomOf="@+id/etCalAddr"
+        tools:layout_editor_absoluteX="56dp" />
+
+    <TextView
+        android:id="@+id/tvBLEdevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(none)"
+        app:layout_constraintTop_toBottomOf="@+id/tvBLEstatus"
+        tools:layout_editor_absoluteX="80dp" />
+
+    <TextView
+        android:id="@+id/lblNetworkRecvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Network RX port 12246:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintTop_toBottomOf="@+id/tvBLEdevices"
+        tools:layout_editor_absoluteX="40dp" />
+
+    <TextView
+        android:id="@+id/tvNetRecv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="No data received"
+        app:layout_constraintTop_toBottomOf="@+id/lblNetworkRecvStatus"
+        tools:layout_editor_absoluteX="63dp" />
+
+    <TextView
+        android:id="@+id/tvNetworkRecvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="---- seconds ago"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lblNetworkRecvStatus" />
+
+    <TextView
+        android:id="@+id/tvBLEtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="---- seconds ago"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lblBluetoothStatus2" />
+
+    <TextView
+        android:id="@+id/lblNetworkTransmitStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Network TX port 12245:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintTop_toBottomOf="@+id/tvNetRecv"
+        tools:layout_editor_absoluteX="40dp" />
+
+    <TextView
+        android:id="@+id/tvNetTransm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="No data sent"
+        app:layout_constraintTop_toBottomOf="@+id/lblNetworkTransmitStatus"
+        tools:layout_editor_absoluteX="63dp" />
+
+    <TextView
+        android:id="@+id/tvNetworkTransmTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="---- seconds ago"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lblNetworkTransmitStatus" />
+
+    <Switch
+        android:id="@+id/swHighFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="High update rate"
+        app:layout_constraintBottom_toTopOf="@+id/btnStop"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:checked="true" />
+
+    <Switch
+        android:id="@+id/swCompass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Enable compass"
+        app:layout_constraintBottom_toTopOf="@+id/swHighFreq"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:checked="true" />
+
+    <EditText
+        android:id="@+id/etCalAddr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Address of Calypso wind device to connect to."
+        android:inputType="textPersonName"
+        android:text="Adress"
+        app:layout_constraintTop_toBottomOf="@+id/lblBluetoothStatus2"
+        tools:layout_editor_absoluteX="63dp" />
+
+</android.support.constraint.ConstraintLayout>
