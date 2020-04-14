@@ -235,20 +235,35 @@ public class MainActivity extends AppCompatActivity {
                 for (int idx = 0; idx < msgs.length; ++idx)
                 {
 //                    if (msgs[idx].length() > 5 && msgs[idx].substring(2,5).equals("PGG")) {
-                        if (msgs[idx].length() > 5 && msgs[idx].substring(3,6).equals("VTG")) {
-                            String[] parts = msgs[idx].split(",");
-                            if (parts.length > 5 && parts[1].length() > 0 && parts[5].length() > 0) {
-                                cogT = Double.parseDouble(parts[1]);
-                                sogMS = Double.parseDouble(parts[5]) * 1852.0 / 3600.0;
+                    if (msgs[idx].length() > 5 && msgs[idx].substring(3,6).equals("VTG")) {
+                        String[] parts = msgs[idx].split(",");
+                        if (parts.length > 5 && parts[1].length() > 0 && parts[5].length() > 0) {
+                            cogT = Double.parseDouble(parts[1]);
+                            sogMS = Double.parseDouble(parts[5]) * 1852.0 / 3600.0;
 
-                                gpsTimestamp = android.os.SystemClock.elapsedRealtime();
-                                printmsg = "Received:   COG: " + cogT + " deg     SOG: " + sogMS + " m/s";
-                                setUiMsg(MsgDestination.netRecvStatus, printmsg);
-                            } else {
-                                sogMS = 0.0;
-                            }
-                            sogKPH = sogMS * 3.6;
+                            gpsTimestamp = android.os.SystemClock.elapsedRealtime();
+                            printmsg = "Received:   COG: " + cogT + " deg     SOG: " + sogMS + " m/s";
+                            setUiMsg(MsgDestination.netRecvStatus, printmsg);
+                        } else {
+                            sogMS = 0.0;
                         }
+                        sogKPH = sogMS * 3.6;
+                    }
+                    if (msgs[idx].length() > 5 && msgs[idx].substring(1,6).equals("RMC")) {
+                        String[] parts = msgs[idx].split(",");
+                        if (parts.length > 8 && parts[2].length() > 0 && parts[7].length() > 0 && parts[8].length() > 0) { // TODO: check for A(ctive)
+                            cogT = Double.parseDouble(parts[8]);
+                            sogMS = Double.parseDouble(parts[7]) * 1852.0 / 3600.0;
+
+                            gpsTimestamp = android.os.SystemClock.elapsedRealtime();
+                            printmsg = "Received:   COG: " + cogT + " deg     SOG: " + sogMS + " m/s";
+                            //printmsg = "Received: " + msgs[idx];
+                            setUiMsg(MsgDestination.netRecvStatus, printmsg);
+                        } else {
+                            sogMS = 0.0;
+                        }
+                        sogKPH = sogMS * 3.6;
+                    }
                 }
 
                 packet.setLength(buffer.length);
